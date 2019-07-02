@@ -225,24 +225,21 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
                 @Override
                 public void onItemRangeInserted(ObservableList<Datum> sender, int positionStart, int itemCount) {
 
-                    if(Status.getMsgStatus()==true&&adapter!=null)
+                    if(adapter!=null)
                     {
                         adapter.setList(messagesList);
                         adapter.notifyDataSetChanged();
                         recyclerView.scrollToPosition(messagesList.size() - 1);
+                        Log.i("menu","adap1");
                     }
+
                     else
-                        if(adapter!=null)
-                        {
-                            adapter.setList(messagesList);
-                            adapter.notifyDataSetChanged();
-                            recyclerView.scrollToPosition(messagesList.size() - 1);
-                        }
-                        else
                     {
                         adapter = new GetMessageAdapter(messagesList, getApplicationContext(), username,MessaginActivity.this);
                         recyclerView.setAdapter(adapter);
                         recyclerView.scrollToPosition(messagesList.size() - 1);
+                        Log.i("menu","adap2");
+
                     }
 
                     ObservableMap<String,List<Datum>> newBackup;
@@ -270,17 +267,12 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
                 }
             });
 
-            if(Splashscreen.getBackupMap().get(recipent)!=null)
-            {
-                messagesList.addAll(Splashscreen.getBackupMap().get(recipent));
-            }
-            else
-            {
+
                 Toast.makeText(MessaginActivity.this,"Reloading the messages, please wait",Toast.LENGTH_SHORT).show();
 
                 getMessages = new GetMessages(username, password, recipent);
                 getMesseages(getMessages);
-            }
+
             sendMessageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -337,6 +329,7 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
                 recyclerView.setLayoutManager(new LinearLayoutManager(MessaginActivity.this));
                 adapter = new GetMessageAdapter(backList, getApplicationContext(), username,MessaginActivity.this);
                 recyclerView.setAdapter(adapter);
+                Log.i("menu","adap3");
                 recyclerView.scrollToPosition(backList.size() - 1);
 
 
@@ -467,7 +460,7 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
         super.onPause();
 
 
-        Status.setMsgStatus(false);
+        //Status.setMsgStatus(false);
 
     }
 
@@ -475,15 +468,15 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
     public void onStart(){
 
         super.onStart();
-        Status.setMsgStatus(true);
+        //Status.setMsgStatus(true);
 
         if (ConnectivityHelper.isConnectedToNetwork(getApplicationContext())) {
             //Show the connected screen
 
             if(Status.getNotificationStatus()==true)
             {
-                getMesseages( new GetMessages(username, password, recipent));
-                Status.setNotificationStatus(false);
+               // getMesseages( new GetMessages(username, password, recipent));
+              //  Status.setNotificationStatus(false);
             }
         } else{
             Toast.makeText(MessaginActivity.this, "no connection", Toast.LENGTH_SHORT).show();
@@ -498,7 +491,7 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
     public void onRestart(){
 
         super.onRestart();
-        Status.setMsgStatus(true);
+      //  Status.setMsgStatus(true);
 
 
 
@@ -507,7 +500,7 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
     public void onStop()
     {
         super.onStop();
-        Status.setMsgStatus(false);
+      //  Status.setMsgStatus(false);
 
     }
 
@@ -533,7 +526,7 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
 
     private void getLastLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-           //check Permission
+            //check Permission
             return;
         }
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(this, new OnCompleteListener<Location>() {
@@ -700,13 +693,13 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
 
 
                 if (response.body() != null) {
-                   for(int i =0; i<response.body().getData().size();i++)
-                   {
-                       if(!messagesList.contains(response.body().getData().get(i)))
-                       {
-                           messagesList.add(response.body().getData().get(i));
-                       }
-                   }
+                    for(int i =0; i<response.body().getData().size();i++)
+                    {
+                        if(!messagesList.contains(response.body().getData().get(i)))
+                        {
+                            messagesList.add(response.body().getData().get(i));
+                        }
+                    }
 
                 }
             }

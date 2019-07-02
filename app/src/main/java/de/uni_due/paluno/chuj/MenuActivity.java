@@ -109,6 +109,7 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
                     else
                     {
                         adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this);
+                        adapter.setHasStableIds(true);
                         recyclerView.setAdapter(adapter);
                     };
 
@@ -125,6 +126,7 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
                     else
                     {
                         adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this);
+                        adapter.setHasStableIds(true);
                         recyclerView.setAdapter(adapter);
                     }
                 }
@@ -140,6 +142,8 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
                     else
                     {
                         adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this);
+                        adapter.setHasStableIds(true);
+
                         recyclerView.setAdapter(adapter);
                     }
 
@@ -155,6 +159,8 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
                     else
                     {
                         adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this);
+                        adapter.setHasStableIds(true);
+
                         recyclerView.setAdapter(adapter);
                     }
                 }
@@ -170,6 +176,8 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
                     else
                     {
                         adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this);
+                        adapter.setHasStableIds(true);
+
                         recyclerView.setAdapter(adapter);
                     }
                 }
@@ -184,6 +192,8 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
 
 
                         adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this,backupMap);
+                        adapter.setHasStableIds(true);
+
                         recyclerView.setAdapter(adapter);
                     };
 
@@ -252,6 +262,8 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
             Toast.makeText(MenuActivity.this,"No connection",Toast.LENGTH_SHORT).show();
 
             adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this,backupMap);
+            adapter.setHasStableIds(true);
+
             recyclerView.setAdapter(adapter);
 
         }
@@ -335,6 +347,8 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
                         public void run() {
 
                             adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this,backupMap);
+                            adapter.setHasStableIds(true);
+
                             recyclerView.setAdapter(adapter);
 
 
@@ -376,6 +390,8 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
             recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(MenuActivity.this));
             adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this,backupMap);
+            adapter.setHasStableIds(true);
+
             recyclerView.setAdapter(adapter);
         } else {
 
@@ -383,6 +399,8 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
             recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(MenuActivity.this));
             adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this,backupMap);
+            adapter.setHasStableIds(true);
+
             recyclerView.setAdapter(adapter);
 
         }

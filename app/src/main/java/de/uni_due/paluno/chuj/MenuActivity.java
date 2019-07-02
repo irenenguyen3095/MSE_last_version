@@ -105,11 +105,15 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
                     {
                         adapter.setList(backupList);
                         adapter.notifyDataSetChanged();
+                        Log.i("friend","adap1");
+
                     }
                     else
                     {
                         adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this);
                         recyclerView.setAdapter(adapter);
+                        Log.i("friend","adap2");
+
                     };
 
                 }
@@ -117,30 +121,25 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
                 @Override
                 public void onItemRangeChanged(ObservableList<String> sender, int positionStart, int itemCount) {
 
-                    if(adapter!=null)
-                    {
-                        adapter.setList(backupList);
-                        adapter.notifyDataSetChanged();
-                    }
-                    else
+
+                    if(adapter==null)
                     {
                         adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this);
                         recyclerView.setAdapter(adapter);
+                        Log.i("friend","changed");
+
                     }
                 }
 
                 @Override
                 public void onItemRangeInserted(ObservableList<String> sender, int positionStart, int itemCount) {
 
-                    if(adapter!=null)
-                    {
-                        adapter.setList(backupList);
-                        adapter.notifyDataSetChanged();
-                    }
-                    else
+                   if(adapter==null)
                     {
                         adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this);
                         recyclerView.setAdapter(adapter);
+                        Log.i("friend","inserted");
+
                     }
 
                 }
@@ -151,11 +150,15 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
                     {
                         adapter.setList(backupList);
                         adapter.notifyDataSetChanged();
+                        Log.i("friend","moved");
+
                     }
                     else
                     {
                         adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this);
                         recyclerView.setAdapter(adapter);
+                        Log.i("friend","moved");
+
                     }
                 }
 
@@ -185,6 +188,8 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
 
                         adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this,backupMap);
                         recyclerView.setAdapter(adapter);
+                        Log.i("friend","onmapchanged");
+
                     };
 
                 }
@@ -243,6 +248,8 @@ public class MenuActivity extends AppCompatActivity implements RecyclerAdapter.O
 
             adapter = new RecyclerAdapter(backupList, getApplicationContext(), MenuActivity.this,backupMap);
             recyclerView.setAdapter(adapter);
+            Log.i("friend","view adapt");
+
 
         }
 

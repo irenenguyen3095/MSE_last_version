@@ -134,10 +134,10 @@ private static ObservableMap<String,List<Datum>> backupMap;
 
                             ObservableArrayList<String> backupList = new ObservableArrayList<>();
 
-                           new Splashscreen().getMesseages(new GetMessages(username, password,addFriend.getFriend()));
+                         /*  new Splashscreen().getMesseages(new GetMessages(username, password,addFriend.getFriend()));
                            backupList=MenuActivity.getBackupList();
                            backupList.add(addContactText.getText().toString());
-                           Splashscreen.getBackupMap().put(addContactText.getText().toString(),null);
+                           Splashscreen.getBackupMap().put(addContactText.getText().toString(),null);*/
 
 
 

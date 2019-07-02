@@ -15,6 +15,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -225,15 +226,7 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
                 @Override
                 public void onItemRangeInserted(ObservableList<Datum> sender, int positionStart, int itemCount) {
 
-                    if(adapter!=null)
-                    {
-                        adapter.setList(messagesList);
-                        adapter.notifyDataSetChanged();
-                        recyclerView.scrollToPosition(messagesList.size() - 1);
-                        Log.i("menu","adap1");
-                    }
-
-                    else
+                    if(adapter==null)
                     {
                         adapter = new GetMessageAdapter(messagesList, getApplicationContext(), username,MessaginActivity.this);
                         recyclerView.setAdapter(adapter);
@@ -341,6 +334,7 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
         }
 
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -476,7 +470,7 @@ public class MessaginActivity extends AppCompatActivity implements GetMessageAda
             if(Status.getNotificationStatus()==true)
             {
                // getMesseages( new GetMessages(username, password, recipent));
-              //  Status.setNotificationStatus(false);
+                Status.setNotificationStatus(false);
             }
         } else{
             Toast.makeText(MessaginActivity.this, "no connection", Toast.LENGTH_SHORT).show();

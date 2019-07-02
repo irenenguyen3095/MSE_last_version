@@ -84,7 +84,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                    if(msgStatus==true)
                    {
                        if (!sender.equals(username)) {
-                       showNotificationInApp(showPreview, sender);
+                      // showNotificationInApp(showPreview, sender);
                    }
                    }
 
@@ -98,8 +98,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                            } catch (ParseException e) {
                                e.printStackTrace();
                            }
-                           MessaginActivity.getPartConversation( new partConversationModel(username, password, sender,date.toString()));
-                           showNotificationInMenu(showPreview,sender);
+                         //  MessaginActivity.getPartConversation( new partConversationModel(username, password, sender,date.toString()));
+                          // showNotificationInMenu(showPreview,sender);
 
                        }
                        else
